@@ -1,0 +1,39 @@
+.homePanel {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin-left: 4vw;
+  background-color: rgb(50, 146, 146);
+  color: white;
+  border-radius: 4px;
+  height: 5vh;
+}
+
+.headers {
+  margin: 7px 15px;
+}
+
+.headers:hover {
+  text-decoration: underline;
+}
+
+.updates {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin-left: 4vw;
+  background-color: rgb(247, 247, 223);
+  border-radius: 4px;
+  height: 5vh;
+  margin-top: 2vh;
+}
+
+.details {
+  width: 90%;
+  height: 55vh;
+  margin-left: 4vw;
+  background-color: rgb(247, 245, 245);
+  border-radius: 4px;
+  margin-top: 2vh;
+  border: 1px solid black;
+}

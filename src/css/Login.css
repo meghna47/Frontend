@@ -1,0 +1,40 @@
+.Form {
+  background: white;
+  display: block;
+  position: absolute;
+  margin-top: 33vh;
+  padding: 2rem;
+}
+
+.outerBox {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  border: 1px solid black;
+  padding: 18px;
+  background: whitesmoke;
+}
+
+.formFields {
+  height: 3vh;
+  margin-top: 1rem;
+}
+
+.loginButton {
+  width: 5vw;
+  height: 3vh;
+  margin-top: 2rem;
+  color: white;
+  background: forestgreen;
+}
+
+.Buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2vh;
+}
+
+.clicked {
+  background: greenyellow;
+  color: white;
+}
