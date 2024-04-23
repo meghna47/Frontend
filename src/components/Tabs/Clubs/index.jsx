@@ -17,20 +17,22 @@ const Clubs = () => {
   }, []);
 
   return sessionStorage.getItem("user_token") ? (
-    <Row>
-      {clubs_list.map((c) => (
-        <Col
-          key={c.Id}
-          xs={{ flex: "100%" }}
-          sm={{ flex: "50%" }}
-          md={{ flex: "40%" }}
-          lg={{ flex: "20%" }}
-          xl={{ flex: "10%" }}
-        >
-          <Club ClubInfo={c} />
-        </Col>
-      ))}
-    </Row>
+    <>
+      <Row>
+        {clubs_list.map((c) => (
+          <Col
+            key={c.Id}
+            xs={{ flex: "100%" }}
+            sm={{ flex: "50%" }}
+            md={{ flex: "40%" }}
+            lg={{ flex: "20%" }}
+            xl={{ flex: "10%" }}
+          >
+            <Club ClubInfo={c} />
+          </Col>
+        ))}
+      </Row>
+    </>
   ) : (
     <Navigate to="/login" />
   );

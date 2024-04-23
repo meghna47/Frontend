@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { Buffer } from "buffer";
-import { Avatar, Card, Button, Modal } from "antd";
+import { Button, Modal } from "antd";
 
 import image from "../../../Images/scanner.jpeg";
-const { Meta } = Card;
+import "../../../css/Club.css";
 
 const Club = ({ ClubInfo }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const showModal = () => {
+  const showModal = (e) => {
+    e.preventDefault();
     setIsModalOpen(true);
   };
 
@@ -21,38 +22,34 @@ const Club = ({ ClubInfo }) => {
     setIsModalOpen(false);
   };
 
+  const handleClubClick = (e, ClubInfo) => {
+    window.location.href = `/Clubs/${ClubInfo.Id}`;
+  };
+
   let logo = new Blob([Buffer.from(ClubInfo.Logo.data)]);
 
   return sessionStorage.getItem("user_token") ? (
-    <Card
-      style={{ width: 1000 }}
-      cover={
-        <img
-          style={{ width: "25vw", margin: "1rem" }}
-          src={URL.createObjectURL(logo)}
-          alt=""
-        />
-      }
-      actions={[]}
-    >
-      <Meta avatar={<Avatar src={URL.createObjectURL(logo)} />} />
-      <br />
-      Name: {ClubInfo.Name} <br />
-      <br />
-      <Button type="primary" onClick={showModal}>
-        Join Club
-      </Button>
-      <Modal
-        title="Make Payment"
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <img src={image} style={{ height: "40vh" }} alt={""} />
+    <>
+      <div className="club-card" onClick={(e) => handleClubClick(e, ClubInfo)}>
+        <img src={URL.createObjectURL(logo)} alt="" />
+
+        <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+          <span style={{ fontSize: "x-large", width: "100%", padding: "2px" }}>
+            {ClubInfo.Name}
+          </span>
+          <span style={{ padding: "2px" }}>
+            <Button type="primary" onClick={showModal}>
+              Join Club
+            </Button>
+            <Modal title="Make Payment" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <img src={image} style={{ height: "40vh" }} alt={""} />
+              </div>
+            </Modal>
+          </span>
         </div>
-      </Modal>
-    </Card>
+      </div>
+    </>
   ) : (
     <Navigate to="/login" />
   );
