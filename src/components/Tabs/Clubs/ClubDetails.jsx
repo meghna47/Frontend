@@ -5,6 +5,7 @@ import { Button, Descriptions } from "antd";
 
 import axios from "../../../api/axios";
 import "../../../css/Club.css";
+import StudentCard from "../StudentInfo/StudentCard";
 
 const GetClubInfo = async (Id) => {
   let res = await axios.get(`/clubs/${Id}`, {});
@@ -24,7 +25,12 @@ const ClubDetails = () => {
       <>
         <Button onClick={(e) => window.history.back()}>Back</Button>
         <div className="club-details">
-          <img src={URL.createObjectURL(new Blob([Buffer.from(ClubInfo.Logo.data)]))} alt="" />
+          <img
+            src={URL.createObjectURL(
+              new Blob([Buffer.from(ClubInfo.Logo.data)])
+            )}
+            alt=""
+          />
           <div className="flex-div width100per">
             <Descriptions
               bordered
@@ -35,36 +41,19 @@ const ClubDetails = () => {
                   key: "1",
                   label: "Club Name",
                   children: ClubInfo.Name,
-                  span: 24,
+                  span: 24
                 },
                 {
                   key: "2",
                   label: "Description",
                   children: ClubInfo.Description,
-                  span: 24,
+                  span: 24
                 },
                 {
                   key: "3",
                   label: "President",
-                  children: (
-                    <div className="flex-div">
-                      <img
-                        className="limit-img"
-                        src={URL.createObjectURL(
-                          new Blob([Buffer.from(ClubInfo.ClubPresident.profile_picture)])
-                        )}
-                        alt=""
-                      />
-                      <div>
-                        <div>
-                          President Name:{" "}
-                          {`${ClubInfo.ClubPresident.first_name} ${ClubInfo.ClubPresident.last_name}`}
-                        </div>
-                        <div>President Phone Number: {ClubInfo.ClubPresident.phone_number}</div>
-                      </div>
-                    </div>
-                  ),
-                },
+                  children: <StudentCard StudentInfo={ClubInfo.ClubPresident} />
+                }
               ]}
             />
           </div>

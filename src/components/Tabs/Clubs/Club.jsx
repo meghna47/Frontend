@@ -10,7 +10,6 @@ const Club = ({ ClubInfo }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = (e) => {
-    e.preventDefault();
     setIsModalOpen(true);
   };
 
@@ -30,18 +29,30 @@ const Club = ({ ClubInfo }) => {
 
   return sessionStorage.getItem("user_token") ? (
     <>
-      <div className="club-card" onClick={(e) => handleClubClick(e, ClubInfo)}>
-        <img src={URL.createObjectURL(logo)} alt="" />
+      <div className="club-card">
+        <img
+          src={URL.createObjectURL(logo)}
+          onClick={(e) => handleClubClick(e, ClubInfo)}
+          alt=""
+        />
 
         <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-          <span style={{ fontSize: "x-large", width: "100%", padding: "2px" }}>
+          <span
+            style={{ fontSize: "x-large", width: "100%", padding: "2px" }}
+            onClick={(e) => handleClubClick(e, ClubInfo)}
+          >
             {ClubInfo.Name}
           </span>
           <span style={{ padding: "2px" }}>
             <Button type="primary" onClick={showModal}>
               Join Club
             </Button>
-            <Modal title="Make Payment" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+            <Modal
+              title="Make Payment"
+              open={isModalOpen}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            >
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <img src={image} style={{ height: "40vh" }} alt={""} />
               </div>

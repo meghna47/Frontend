@@ -8,7 +8,7 @@ import Contact from "./Contact";
 import Events from "./Events";
 import Feedback from "./Feedback";
 import Home from "./Home";
-import StudentsInfo from "./Students_Info";
+import StudentsInfo from "./StudentInfo";
 
 const Tabs = () => {
   return sessionStorage.getItem("user_token") ? (

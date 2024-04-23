@@ -10,6 +10,7 @@ const onFinish = async ({ username, password }) => {
   let res = await axios.post(`/auth/login`, { username, password });
 
   sessionStorage.setItem("user_token", res.data.token);
+  sessionStorage.setItem("user_id", res.data.user.Id);
   window.location.href = "/home";
 };
 const onFinishFailed = (errorInfo) => {
@@ -26,23 +27,23 @@ function LoginForm() {
         backgroundSize: "cover",
         height: "98vh",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "center"
       }}
     >
       <div className="Form">
         <Form
           name="basic"
           labelCol={{
-            span: 8,
+            span: 8
           }}
           wrapperCol={{
-            span: 16,
+            span: 16
           }}
           style={{
-            maxWidth: 600,
+            maxWidth: 600
           }}
           initialValues={{
-            remember: true,
+            remember: true
           }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
@@ -54,8 +55,8 @@ function LoginForm() {
             rules={[
               {
                 required: true,
-                message: "Please input your username!",
-              },
+                message: "Please input your username!"
+              }
             ]}
           >
             <Input />
@@ -67,8 +68,8 @@ function LoginForm() {
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
-              },
+                message: "Please input your password!"
+              }
             ]}
           >
             <Input.Password />
@@ -79,7 +80,7 @@ function LoginForm() {
             valuePropName="checked"
             wrapperCol={{
               offset: 8,
-              span: 16,
+              span: 16
             }}
           >
             <Checkbox>Remember me</Checkbox>
@@ -88,7 +89,7 @@ function LoginForm() {
           <Form.Item
             wrapperCol={{
               offset: 8,
-              span: 16,
+              span: 16
             }}
           >
             <Button type="primary" htmlType="submit">
